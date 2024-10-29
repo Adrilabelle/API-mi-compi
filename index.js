@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
 const data = require("./posts");
 const PORT = process.env.PORT || 5000;
 
@@ -23,4 +24,7 @@ app.post("/posts/create", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
+  mongoose.connect("mongodb://127.0.0.1:27017/database").then(() => {
+    console.log("connection successfully to database");
+  })
 });
